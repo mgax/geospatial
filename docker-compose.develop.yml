@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  app:
+    command: ./run.sh devserver
+    volumes:
+      - .:/app
+    ports:
+      - 127.0.0.1:8000:8000
