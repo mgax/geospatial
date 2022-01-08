@@ -22,6 +22,8 @@ django==3.2.11
     #   django-treebeard
     #   djangorestframework
     #   wagtail
+django-environ==0.8.1
+    # via -r requirements/base.in
 django-filter==21.1
     # via wagtail
 django-modelcluster==5.2

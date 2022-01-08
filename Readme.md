@@ -16,6 +16,7 @@ To log into the admin section, go to `https://{site_domain}/admin/`, and log in 
 To create a local development environment:
 
 ```shell
+cp example-docker.env docker.env
 cp docker-compose.develop.yml docker-compose.override.yml
 docker-compose build --pull
 docker-compose up -d
