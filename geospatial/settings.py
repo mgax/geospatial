@@ -4,6 +4,10 @@ import environ
 
 env = environ.Env()
 
+if env('GEOSPATIAL_BUILD', default=False):
+    env.ENVIRON.setdefault('GEOSPATIAL_SECRET_KEY', 'temporary')
+    env.ENVIRON.setdefault('DATABASE_URL', 'sqlite:////tmp/db.sqlite')
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 DEBUG = env('GEOSPATIAL_DEBUG', default=False)
@@ -70,10 +74,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'geospatial.wsgi.application'
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': env.db(),
 }
 
 AUTH_PASSWORD_VALIDATORS = [

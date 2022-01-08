@@ -23,6 +23,6 @@ RUN chown wagtail:wagtail /app
 COPY --chown=wagtail:wagtail . .
 
 USER wagtail
-RUN ./manage.py collectstatic --noinput --clear
+RUN GEOSPATIAL_BUILD=yes ./manage.py collectstatic --noinput --clear
 
 CMD ./run.sh prodserver

@@ -50,6 +50,8 @@ openpyxl==3.0.9
     # via tablib
 pillow==8.4.0
     # via wagtail
+psycopg2-binary==2.9.3
+    # via -r requirements/base.in
 pytz==2021.3
     # via
     #   django

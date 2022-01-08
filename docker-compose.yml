@@ -5,3 +5,18 @@ services:
     build: .
     restart: unless-stopped
     env_file: docker.env
+    environment:
+      DATABASE_URL: psql://geospatial:geospatial@db:5432/geospatial
+
+  db:
+    image: postgres:14
+    volumes:
+    environment:
+      POSTGRES_USER: geospatial
+      POSTGRES_PASSWORD: geospatial
+    volumes:
+      - db:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  db:
