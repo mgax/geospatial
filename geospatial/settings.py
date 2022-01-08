@@ -13,8 +13,8 @@ SECRET_KEY = env('GEOSPATIAL_SECRET_KEY')
 ALLOWED_HOSTS = env('GEOSPATIAL_ALLOWED_HOSTS', default=[])
 
 INSTALLED_APPS = [
-    'home',
-    'search',
+    'geospatial.content',
+    'geospatial.search',
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
