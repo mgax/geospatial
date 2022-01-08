@@ -6,6 +6,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('wagtailcore', '0040_page_draft_title'),
+        ('content', '0001_initial_user_model'),
     ]
 
     operations = [

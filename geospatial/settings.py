@@ -129,3 +129,7 @@ WAGTAILSEARCH_BACKENDS = {
 BASE_URL = 'http://example.com'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+AUTH_USER_MODEL = 'content.User'
