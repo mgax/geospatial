@@ -1,3 +1,4 @@
 -c base.txt
 
 pip-tools
+pytest-django

@@ -26,3 +26,9 @@ docker-compose exec app ./manage.py createsuperuser
 ```
 
 Then go to http://localhost:8000/admin/ and log in with the user you've just created.
+
+### Running tests
+
+```shell
+docker-compose exec app ./manage.py pytest
+```
