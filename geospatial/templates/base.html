@@ -1,4 +1,6 @@
-{% load static wagtailcore_tags wagtailuserbar geospatial_nav %}
+{% load static wagtailcore_tags wagtailuserbar %}
+
+{% wagtail_site as current_site %}
 
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -9,7 +11,6 @@
                 {% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}
             {% endblock %}
             {% block title_suffix %}
-                {% wagtail_site as current_site %}
                 {% if current_site and current_site.site_name %}- {{ current_site.site_name }}{% endif %}
             {% endblock %}
         </title>
@@ -27,11 +28,9 @@
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
 
-        {% wagtail_site as current_site %}
-        {% get_nav_pages as nav_pages %}
         <p>
           [<a href="/">{{ current_site.site_name }}</a>]
-          {% for page in nav_pages %}
+          {% for page in current_site.root_page.specific.nav_pages %}
             [<a href="{% pageurl page %}">{{ page.title }}</a>]
           {% endfor %}
         </p>

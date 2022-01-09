@@ -13,6 +13,10 @@ class User(AbstractUser):
 class HomePage(Page):
     parent_page_types = []
 
+    @property
+    def nav_pages(self):
+        return self.get_children().live().in_menu()
+
 
 class SimplePage(Page):
     body = RichTextField(blank=True)
