@@ -1,4 +1,4 @@
-{% load static wagtailcore_tags wagtailuserbar %}
+{% load static wagtailcore_tags wagtailuserbar geospatial_nav %}
 
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -26,6 +26,15 @@
 
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
+
+        {% wagtail_site as current_site %}
+        {% get_nav_pages as nav_pages %}
+        <p>
+          [<a href="/">{{ current_site.site_name }}</a>]
+          {% for page in nav_pages %}
+            [<a href="{% pageurl page %}">{{ page.title }}</a>]
+          {% endfor %}
+        </p>
 
         {% block content %}{% endblock %}
 
