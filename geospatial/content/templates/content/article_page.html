@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags %}
 
-{% block body_class %}template-SimplePage{% endblock %}
+{% block body_class %}template-ArticlePage{% endblock %}
 
 {% block content %}
 
   <h1>{{ page.title }}</h1>
+
+  <p>{{ page.intro|richtext }}</p>
 
   {{ page.body|richtext }}
 

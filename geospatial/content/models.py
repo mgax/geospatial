@@ -1,3 +1,4 @@
+from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 from wagtail.core.models import Page
@@ -27,4 +28,33 @@ class SimplePage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('body', classname='full'),
+    ]
+
+
+class ArticleIndexPage(Page):
+    subpage_types = [
+        'content.ArticlePage',
+    ]
+
+    @property
+    def published_articles(self):
+        return self.get_children().live()
+
+
+class ArticlePage(Page):
+    intro = models.CharField(max_length=4000)
+    body = RichTextField(blank=True)
+
+    search_fields = Page.search_fields + [
+        index.SearchField('intro'),
+        index.SearchField('body'),
+    ]
+
+    content_panels = Page.content_panels + [
+        FieldPanel('intro'),
+        FieldPanel('body', classname='full'),
+    ]
+
+    parent_page_types = [
+        'content.ArticleIndexPage',
     ]

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-ArticleIndexPage{% endblock %}
+
+{% block content %}
+
+  <h1>{{ page.title }}</h1>
+
+  {% for article in page.published_articles %}
+    {% with article=article.specific %}
+      <article>
+        <h3>
+          <a href="{{ article.url }}">
+            {{ article.title }}
+          </a>
+        </h3>
+
+        <p>
+          {{ article.intro }}
+        </p>
+      </article>
+    {% endwith %}
+  {% endfor %}
+
+{% endblock content %}
