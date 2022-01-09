@@ -4,6 +4,7 @@ WORKDIR /app
 RUN useradd -m wagtail
 EXPOSE 8000
 ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
     PORT=8000
 
 RUN apt-get update --yes --quiet \
