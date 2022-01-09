@@ -20,6 +20,7 @@ cp example-docker.env docker.env
 cp docker-compose.develop.yml docker-compose.override.yml
 docker-compose build --pull
 docker-compose up -d
+docker-compose exec app ./manage.py collectstatic
 docker-compose exec app ./manage.py migrate
 docker-compose exec app ./manage.py createsuperuser
 ```
