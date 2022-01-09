@@ -31,6 +31,32 @@ class SimplePage(Page):
     ]
 
 
+class AuthorIndexPage(Page):
+    subpage_types = [
+        'content.AuthorPage',
+    ]
+
+    @property
+    def published_authors(self):
+        return self.get_children().live()
+
+
+class AuthorPage(Page):
+    intro = models.CharField(max_length=4000)
+
+    search_fields = Page.search_fields + [
+        index.SearchField('intro'),
+    ]
+
+    content_panels = Page.content_panels + [
+        FieldPanel('intro'),
+    ]
+
+    parent_page_types = [
+        'content.AuthorIndexPage',
+    ]
+
+
 class ArticleIndexPage(Page):
     subpage_types = [
         'content.ArticlePage',
