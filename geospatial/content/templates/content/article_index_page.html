@@ -16,6 +16,16 @@
           </a>
         </h3>
 
+        <ul>
+          {% for author in article.authors.all %}
+          <li>
+            <a href="{{ author.url }}">
+              {{ author.title }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+
         <p>
           {{ article.intro }}
         </p>

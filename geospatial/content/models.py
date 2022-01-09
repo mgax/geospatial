@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-
+from django import forms
+from modelcluster.fields import ParentalManyToManyField
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import FieldPanel
@@ -70,6 +71,7 @@ class ArticleIndexPage(Page):
 class ArticlePage(Page):
     intro = models.CharField(max_length=4000)
     body = RichTextField(blank=True)
+    authors = ParentalManyToManyField(AuthorPage, blank=True)
 
     search_fields = Page.search_fields + [
         index.SearchField('intro'),
@@ -77,6 +79,7 @@ class ArticlePage(Page):
     ]
 
     content_panels = Page.content_panels + [
+        FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
         FieldPanel('intro'),
         FieldPanel('body', classname='full'),
     ]
