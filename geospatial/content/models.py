@@ -11,7 +11,7 @@ class User(AbstractUser):
 
 
 class HomePage(Page):
-    pass
+    parent_page_types = []
 
 
 class SimplePage(Page):
