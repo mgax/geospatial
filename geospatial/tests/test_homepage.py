@@ -9,21 +9,25 @@ pytestmark = [pytest.mark.django_db]
 
 
 def test_homepage(client):
-    response = client.get('/')
+    homepage = HomePage.objects.get()
+
+    assert homepage.url == '/'
+    response = client.get(homepage.url)
     assert response.status_code == HTTPStatus.OK
     html = response.content.decode('utf8')
     assert '<meta charset="utf-8"' in html
 
 
 def test_simple_page(client):
-    home = HomePage.objects.get()
+    homepage = HomePage.objects.get()
     about = SimplePage(
         title='About',
         slug='about',
         body='<p>esome<em>Geography</em> is aw</p>',
     )
-    home.add_child(instance=about)
+    homepage.add_child(instance=about)
 
+    assert about.url == '/about/'
     response = client.get(about.url)
     assert response.status_code == HTTPStatus.OK
     html = response.content.decode('utf8')
@@ -31,14 +35,15 @@ def test_simple_page(client):
 
 
 def test_nav_bar(client):
-    home = HomePage.objects.get()
+    homepage = HomePage.objects.get()
     about = SimplePage(
         title='About',
         slug='about',
         show_in_menus=True,
     )
-    home.add_child(instance=about)
-    response = client.get('/')
+    homepage.add_child(instance=about)
+
+    response = client.get(homepage.url)
     assert response.status_code == HTTPStatus.OK
     html = response.content.decode('utf8')
     assert '[<a href="/about/">About</a>]' in html
