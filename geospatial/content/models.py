@@ -57,6 +57,10 @@ class AuthorPage(Page):
         'content.AuthorIndexPage',
     ]
 
+    @property
+    def published_articles(self):
+        return self.articlepage_set.live()
+
 
 class ArticleIndexPage(Page):
     subpage_types = [
