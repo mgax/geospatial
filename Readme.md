@@ -1,19 +1,21 @@
-# CMS for geo-spatial.org website
+# CMS pentru site-ul geo-spatial.org
 
 
-## Content administration
+## Administrarea de conținut
 
-The website is built using [Wagtail][]. Have a look at the [Wagtail Editor Manual][] for a nice overview of what's possible.
+Site-ul este construit cu [Wagtail][]. Consultați și [Manualul Wagtail pentru editori][].
 
 [Wagtail]: https://wagtail.io/
-[Wagtail Editor Manual]: https://docs.wagtail.io/en/stable/editor_manual/index.html
+[Manualul Wagtail pentru editori]: https://docs.wagtail.io/en/stable/editor_manual/index.html
 
-To log into the admin section, go to `https://{site_domain}/admin/`, and log in with your email and password.
+Pentru login în zona de administrare, mergeți la `https://{site_domain}/admin/`, și autentificați-vă cu username și parolă.
 
 
 ## Development
 
-To create a local development environment:
+Codul sursă și mesajele de commit sunt în limba engleză.
+
+Pentru a instala aplicația local:
 
 ```shell
 cp example-docker.env docker.env
@@ -25,9 +27,9 @@ docker-compose exec app ./manage.py migrate
 docker-compose exec app ./manage.py createsuperuser
 ```
 
-Then go to http://localhost:8000/admin/ and log in with the user you've just created.
+Mergeți la http://localhost:8000/admin/ și autentificați-vă cu userul creat mai sus.
 
-### Running tests
+### Rulat testele
 
 ```shell
 docker-compose exec app ./manage.py pytest
