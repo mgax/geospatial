@@ -137,3 +137,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 AUTH_USER_MODEL = 'content.User'
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+if env('GEOSPATIAL_HTTPS', default=False):
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
