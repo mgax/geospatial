@@ -19,6 +19,10 @@ class HomePage(Page):
     def nav_pages(self):
         return self.get_children().live().in_menu()
 
+    @property
+    def recent_published_articles(self):
+        return ArticlePage.objects.descendant_of(self).live()
+
 
 class SimplePage(Page):
     body = RichTextField(blank=True)
