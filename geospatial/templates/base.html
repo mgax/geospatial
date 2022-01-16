@@ -6,6 +6,7 @@
 <html class="no-js" lang="en">
     <head>
         <meta charset="utf-8" />
+        <link rel="icon" href="{% static 'images/favicon.ico' %}"/>
         <title>
             {% block title %}
                 {% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}
