@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-EventPage{% endblock %}
+
+{% block content %}
+
+  <h1>{{ page.title }}</h1>
+
+  <ul>
+    {% for author in page.authors.all %}
+    <li>
+      <a href="{{ author.url }}">
+        {{ author.title }}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  
+  <p>{{ page.date|safe }}</p>
+
+  <p>{{ page.intro|richtext }}</p>
+
+  {{ page.body|richtext }}
+
+{% endblock content %}

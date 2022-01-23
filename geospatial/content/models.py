@@ -95,3 +95,37 @@ class ArticlePage(Page):
     parent_page_types = [
         'content.ArticleIndexPage',
     ]
+    
+    
+class EventIndexPage(Page):
+    subpage_types = [
+        'content.EventPage',
+    ]
+
+    @property
+    def published_events(self):
+        return self.get_children().live()
+
+
+class EventPage(Page):
+    intro = models.CharField(max_length=4000)
+    body = RichTextField(blank=True)
+    authors = ParentalManyToManyField(AuthorPage, blank=True)
+    date = models.DateField()
+
+    search_fields = Page.search_fields + [
+        index.SearchField('intro'),
+        index.SearchField('body'),
+    ]
+
+    content_panels = Page.content_panels + [
+        FieldPanel('authors', widget=forms.CheckboxSelectMultiple),
+        FieldPanel('date'),
+        FieldPanel('intro'),
+        FieldPanel('body', classname='full'),
+    ]
+
+    parent_page_types = [
+        'content.EventIndexPage',
+    ]
+
