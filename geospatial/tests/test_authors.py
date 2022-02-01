@@ -3,7 +3,6 @@ from io import BytesIO
 import re
 
 import pytest
-from django.conf import settings
 from django.core.files.images import ImageFile
 from wagtail.images.models import Image
 import PIL.Image
