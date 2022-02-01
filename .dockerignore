@@ -38,3 +38,5 @@ wheels/
 *.egg
 docker-compose.*
 /*.env
+/.git
+/.github

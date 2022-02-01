@@ -2,7 +2,7 @@ version: "3"
 
 services:
   app:
-    build: .
+    image: ghcr.io/mgax/geospatial:latest
     restart: unless-stopped
     env_file: docker.env
     environment:
