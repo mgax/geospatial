@@ -30,7 +30,7 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           pull: true
           load: true
-          tags: ${{ IMAGE }}
+          tags: ${{ env.IMAGE }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,mode=max,dest=/tmp/.buildx-cache-new
 
