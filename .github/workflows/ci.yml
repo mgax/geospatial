@@ -4,6 +4,8 @@ on: [push]
 jobs:
   ci:
     runs-on: ubuntu-latest
+    env:
+      IMAGE: ghcr.io/mgax/geospatial-app
     steps:
 
       - uses: actions/checkout@v2
@@ -28,7 +30,7 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           pull: true
           load: true
-          tags: geospatial-app
+          tags: ${{ IMAGE }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,mode=max,dest=/tmp/.buildx-cache-new
 
@@ -38,8 +40,6 @@ jobs:
           mv /tmp/.buildx-cache-new /tmp/.buildx-cache
 
       - name: Prepare testing environment
-        env:
-          IMAGE: geospatial-app
         run: |
           cp docker-compose.testing.yml docker-compose.override.yml
           cp example-docker.env docker.env
