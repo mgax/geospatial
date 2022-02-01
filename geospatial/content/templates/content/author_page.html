@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block body_class %}template-AuthorPage{% endblock %}
 
@@ -8,6 +8,10 @@
   <h1>{{ page.title }}</h1>
 
   <p>{{ page.intro|richtext }}</p>
+
+  <p>
+    {% image page.photos.first.image fill-320x240 %}
+  </p>
 
   {% for article in page.published_articles %}
     {% with article=article.specific %}
