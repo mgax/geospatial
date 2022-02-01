@@ -48,6 +48,7 @@ jobs:
 
       - name: Run test suite
         run: |
+          docker-compose exec -T app flake8
           docker-compose exec -T app ./manage.py makemigrations --check
           docker-compose exec -T app pytest
 
