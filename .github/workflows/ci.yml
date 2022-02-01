@@ -5,7 +5,7 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     env:
-      IMAGE: ghcr.io/mgax/geospatial
+      IMAGE: ghcr.io/mgax/geospatial:latest
     steps:
 
       - uses: actions/checkout@v2
