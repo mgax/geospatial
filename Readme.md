@@ -32,5 +32,5 @@ Mergeți la http://localhost:8000/admin/ și autentificați-vă cu userul creat 
 ### Rulat testele
 
 ```shell
-docker-compose exec app ./manage.py pytest
+docker-compose exec app pytest
 ```

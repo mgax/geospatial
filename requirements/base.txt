@@ -14,7 +14,7 @@ certifi==2021.10.8
     # via requests
 charset-normalizer==2.0.10
     # via requests
-django==3.2.11
+django==3.2.12
     # via
     #   -r requirements/base.in
     #   django-filter
@@ -48,7 +48,7 @@ l18n==2021.3
     # via wagtail
 openpyxl==3.0.9
     # via tablib
-pillow==8.4.0
+pillow==9.0.0
     # via wagtail
 psycopg2-binary==2.9.3
     # via -r requirements/base.in
@@ -74,7 +74,7 @@ telepath==0.2
     # via wagtail
 urllib3==1.26.8
     # via requests
-wagtail==2.15.1
+wagtail==2.15.3
     # via -r requirements/base.in
 webencodings==0.5.1
     # via html5lib
