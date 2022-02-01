@@ -3,4 +3,5 @@ django-environ
 gunicorn
 psycopg2-binary
 wagtail>=2.15,<2.16
+Werkzeug
 whitenoise

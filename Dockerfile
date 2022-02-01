@@ -22,6 +22,7 @@ RUN pip install -r requirements/base.txt -r requirements/dev.txt
 
 RUN chown wagtail:wagtail /app
 COPY --chown=wagtail:wagtail . .
+RUN mkdir -p /media && chown wagtail: /media
 
 USER wagtail
 RUN GEOSPATIAL_BUILD=yes ./manage.py collectstatic --noinput --clear
