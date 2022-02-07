@@ -28,7 +28,7 @@ django-filter==21.1
     # via wagtail
 django-modelcluster==5.2
     # via wagtail
-django-taggit==1.5.1
+django-taggit==2.1.0
     # via wagtail
 django-treebeard==4.5.1
     # via wagtail
@@ -74,7 +74,7 @@ telepath==0.2
     # via wagtail
 urllib3==1.26.8
     # via requests
-wagtail==2.15.3
+wagtail==2.16
     # via -r requirements/base.in
 webencodings==0.5.1
     # via html5lib
