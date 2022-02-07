@@ -14,3 +14,10 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "geospatial.settings")
 
 application = get_wsgi_application()
+
+from django.conf import settings  # noqa
+from werkzeug.middleware.shared_data import SharedDataMiddleware  # noqa
+
+application = SharedDataMiddleware(application, {
+    settings.MEDIA_URL: settings.MEDIA_ROOT,
+})

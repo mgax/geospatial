@@ -1,12 +1,18 @@
 from http import HTTPStatus
+from io import BytesIO
+import re
 
 import pytest
+from django.core.files.images import ImageFile
+from wagtail.images.models import Image
+import PIL.Image
 
 from geospatial.content.models import HomePage
 from geospatial.content.models import AuthorIndexPage
 from geospatial.content.models import AuthorPage
 from geospatial.content.models import ArticleIndexPage
 from geospatial.content.models import ArticlePage
+from geospatial.content.models import AuthorPhoto
 
 pytestmark = [pytest.mark.django_db]
 
@@ -91,3 +97,41 @@ def test_author_page_lists_articles(client):
     assert article.title in html
     assert article.url in html
     assert article.intro in html
+
+
+def test_author_photo(client, settings, tmp_path):
+    homepage = HomePage.objects.get()
+    author_index = AuthorIndexPage(
+        title='Authors',
+        slug='authors',
+    )
+    homepage.add_child(instance=author_index)
+
+    media_root = tmp_path / 'media'
+    settings.MEDIA_ROOT = media_root
+    f = BytesIO()
+    image = PIL.Image.new('RGBA', (640, 480), 'cyan')
+    image.save(f, 'PNG')
+    portrait = Image.objects.create(
+        title='Portrait',
+        file=ImageFile(f, name='portrait.png'),
+    )
+    author = AuthorPage(
+        title='Mr Fancy Pants',
+        slug='mr-fancy-pants',
+        intro='a short abstract',
+        photos=[AuthorPhoto(image=portrait)],
+    )
+    author_index.add_child(instance=author)
+
+    response = client.get(author.url)
+    assert response.status_code == HTTPStatus.OK
+    html = response.content.decode('utf8')
+    m = re.search(r'<img [^>]*src="([^"]+)"[^>]*>', html)
+    assert m is not None
+    url = m.group(1)
+    assert url.startswith(settings.MEDIA_URL)
+    relarive_url = url[len(settings.MEDIA_URL):]
+    assert not relarive_url.startswith('/')
+    image_path = media_root / relarive_url
+    assert image_path.exists()

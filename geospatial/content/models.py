@@ -1,11 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django import forms
+from modelcluster.fields import ParentalKey
 from modelcluster.fields import ParentalManyToManyField
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.admin.edit_handlers import InlinePanel
 from wagtail.search import index
+from wagtail.images.edit_handlers import ImageChooserPanel
 
 
 class User(AbstractUser):
@@ -55,6 +58,7 @@ class AuthorPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('intro'),
+        InlinePanel('photos', label='Photos'),
     ]
 
     parent_page_types = [
@@ -64,6 +68,19 @@ class AuthorPage(Page):
     @property
     def published_articles(self):
         return self.articlepage_set.live()
+
+
+class AuthorPhoto(models.Model):
+    page = ParentalKey(
+        AuthorPage, on_delete=models.CASCADE, related_name='photos'
+    )
+    image = models.ForeignKey(
+        'wagtailimages.Image', on_delete=models.CASCADE, related_name='+'
+    )
+
+    panels = [
+        ImageChooserPanel('image'),
+    ]
 
 
 class ArticleIndexPage(Page):

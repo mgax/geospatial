@@ -117,7 +117,7 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesSto
 STATIC_ROOT = BASE_DIR / 'static'
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = '/media'
 MEDIA_URL = '/media/'
 
 WAGTAIL_SITE_NAME = 'geospatial'

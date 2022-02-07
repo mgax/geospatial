@@ -7,6 +7,8 @@ services:
     env_file: docker.env
     environment:
       DATABASE_URL: psql://geospatial:geospatial@db:5432/geospatial
+    volumes:
+      - media:/media
 
   db:
     image: postgres:14
@@ -20,3 +22,4 @@ services:
 
 volumes:
   db:
+  media:
