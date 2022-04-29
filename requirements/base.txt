@@ -78,7 +78,7 @@ wagtail==2.16.2
     # via -r requirements/base.in
 webencodings==0.5.1
     # via html5lib
-werkzeug==2.1.1
+werkzeug==2.1.2
     # via -r requirements/base.in
 whitenoise==6.0.0
     # via -r requirements/base.in
