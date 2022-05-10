@@ -80,7 +80,7 @@ webencodings==0.5.1
     # via html5lib
 werkzeug==2.1.2
     # via -r requirements/base.in
-whitenoise==6.0.0
+whitenoise==6.1.0
     # via -r requirements/base.in
 willow==1.4
     # via wagtail
