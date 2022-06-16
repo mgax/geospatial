@@ -18,6 +18,8 @@ django==3.2.13
     # via
     #   -r requirements/base.in
     #   django-filter
+    #   django-modelcluster
+    #   django-permissionedforms
     #   django-taggit
     #   django-treebeard
     #   djangorestframework
@@ -26,7 +28,9 @@ django-environ==0.8.1
     # via -r requirements/base.in
 django-filter==21.1
     # via wagtail
-django-modelcluster==5.2
+django-modelcluster==6.0
+    # via wagtail
+django-permissionedforms==0.1
     # via wagtail
 django-taggit==2.1.0
     # via wagtail
@@ -74,7 +78,7 @@ telepath==0.2
     # via wagtail
 urllib3==1.26.8
     # via requests
-wagtail==2.16.2
+wagtail==3.0.1
     # via -r requirements/base.in
 webencodings==0.5.1
     # via html5lib
