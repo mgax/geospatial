@@ -46,6 +46,8 @@ idna==3.3
     # via requests
 l18n==2021.3
     # via wagtail
+markupsafe==2.1.1
+    # via werkzeug
 openpyxl==3.0.9
     # via tablib
 pillow==9.0.1
@@ -78,7 +80,7 @@ wagtail==2.16.2
     # via -r requirements/base.in
 webencodings==0.5.1
     # via html5lib
-werkzeug==2.1.2
+werkzeug==2.2.2
     # via -r requirements/base.in
 whitenoise==6.0.0
     # via -r requirements/base.in
