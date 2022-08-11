@@ -14,16 +14,16 @@ certifi==2021.10.8
     # via requests
 charset-normalizer==2.0.10
     # via requests
-django==3.2.13
+django==3.2.15
     # via
-    #   -r requirements/base.in
+    #   -r base.in
     #   django-filter
     #   django-taggit
     #   django-treebeard
     #   djangorestframework
     #   wagtail
 django-environ==0.8.1
-    # via -r requirements/base.in
+    # via -r base.in
 django-filter==21.1
     # via wagtail
 django-modelcluster==5.2
@@ -39,7 +39,7 @@ draftjs-exporter==2.1.7
 et-xmlfile==1.1.0
     # via openpyxl
 gunicorn==20.1.0
-    # via -r requirements/base.in
+    # via -r base.in
 html5lib==1.1
     # via wagtail
 idna==3.3
@@ -51,7 +51,7 @@ openpyxl==3.0.9
 pillow==9.0.1
     # via wagtail
 psycopg2-binary==2.9.3
-    # via -r requirements/base.in
+    # via -r base.in
 pytz==2021.3
     # via
     #   django
@@ -75,13 +75,13 @@ telepath==0.2
 urllib3==1.26.8
     # via requests
 wagtail==2.16.2
-    # via -r requirements/base.in
+    # via -r base.in
 webencodings==0.5.1
     # via html5lib
 werkzeug==2.1.2
-    # via -r requirements/base.in
+    # via -r base.in
 whitenoise==6.0.0
-    # via -r requirements/base.in
+    # via -r base.in
 willow==1.4
     # via wagtail
 xlrd==2.0.1
